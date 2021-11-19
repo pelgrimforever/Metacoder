@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : text.xml
+    Created on : December 30, 2011, 6:27 PM
+    Author     : pelgrim
+    Description:
+        Text values
+-->
+
+<config>
+	<classname>fxphotoviewer.widgets.explore.Explore</classname>
+</config>
