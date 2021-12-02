@@ -207,7 +207,7 @@ public class Metacodeprocessor {
                 StringBuilderutils.subString(oldcontent, oldcontent.indexOf(checkGenerated) + removecharacters);
                 StringBuilderutils.subString(newcontent, content.indexOf(checkGenerated) + removecharacters);
             }
-            return !oldcontent.equals(newcontent);
+            return !oldcontent.toString().equals(newcontent.toString());
         }
     }
     
@@ -265,7 +265,7 @@ public class Metacodeprocessor {
         //tables
         //new RepeattablesProcessor(this.planguage, code, this.dbproperties).process();
 /* debug 1 singel table / metacode */            
-/*        if(table.getname().equals("orders") && StringBuilderutils.contains(metacode, "public void checkDATA(I:Table:" )) {
+/*        if(table.getname().equals("orders") && StringBuilderutils.contains(metacode, "* I:Table:search.java" )) {
             int i = 0;
         }*/
         RepeattablesProcessor.processTable(this.planguage, code, table, this.dbproperties);

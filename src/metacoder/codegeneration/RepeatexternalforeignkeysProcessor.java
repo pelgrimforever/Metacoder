@@ -67,7 +67,7 @@ public class RepeatexternalforeignkeysProcessor extends RepeatProcessor {
                 }
                 //check if table is relation table
                 for(RelationalForeignkey relfk: efk.getRelationalforeignkeys()) {
-                    //chekc that relational table is not already referenced as a normal foreign key in primary table
+                    //check that relational table is not already referenced as a normal foreign key in primary table
                     boolean efkisused = false;
                     for(Foreignkey fk: table.getForeignkeys().values()) {
                         efkisused = relfk.getFk().getprimarykeytable().equals(fk.getprimarykeytable());
