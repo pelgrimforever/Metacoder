@@ -205,9 +205,9 @@ public class Metacodeprocessor {
             StringBuilder newcontent = new StringBuilder(content.toString());
             if(StringBuilderutils.contains(oldcontent, checkGenerated) && StringBuilderutils.contains(newcontent, checkGenerated)) {
                 StringBuilderutils.subString(oldcontent, oldcontent.indexOf(checkGenerated) + removecharacters);
-                StringBuilderutils.subString(newcontent, content.indexOf(checkGenerated) + removecharacters);
+                StringBuilderutils.subString(newcontent, newcontent.indexOf(checkGenerated) + removecharacters);
             }
-            return !oldcontent.toString().equals(newcontent.toString());
+            return !oldcontent.toString().trim().equals(newcontent.toString().trim());
         }
     }
     
