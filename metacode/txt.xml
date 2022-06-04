@@ -1,0 +1,27 @@
+<language>
+    <name>txt</name>
+    <tablenamefilter>
+    </tablenamefilter>
+    <dbfunctions>
+        <java.lang.String>STRING(":column:")</java.lang.String>
+        <long>LONG(":column:")</long>
+        <boolean>BOOLEAN(":column:")</boolean>
+        <java.sql.Date>DATE(":column:")</java.sql.Date>
+        <float>FLOAT(":column:")</float>
+        <double>DOUBLE(":column:")</double>
+        <int>INTEGER(":column:")</int>
+        <java.sql.Time>TIME(":column:")</java.sql.Time>
+        <java.sql.Timestamp>TIMESTAMP(":column:")</java.sql.Timestamp>
+        <byte>BYTE(":column:")</byte>
+        <java.sql.Array>ARRAY(":column:")</java.sql.Array>
+        <java.lang.Object>OBJECT(":column:")</java.lang.Object>
+        <UNKNOWN>OBJECT(":column:")</UNKNOWN>
+    </dbfunctions>
+    <Objectcasting>
+        <sqlconverter></sqlconverter>
+        <datatypes>
+        </datatypes>
+    </Objectcasting>
+</language>
+
+

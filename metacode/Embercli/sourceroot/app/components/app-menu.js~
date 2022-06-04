@@ -1,0 +1,16 @@
+//ProjectGenerator: NO AUTHOMATIC UPDATE
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+    classNames: ['app-menu'],
+
+    applist: [],
+    
+    didInsertElement: function() {
+    },
+    actions: {
+        openapp: function(app) {
+            this.sendAction("openapp", app);
+        }
+    }
+});

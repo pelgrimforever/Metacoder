@@ -1,0 +1,42 @@
+<language>
+    <name>java</name>
+    <tablenamefilter>
+    </tablenamefilter>
+    <dbfunctions>
+        <java.lang.String>getString(":column:")</java.lang.String>
+        <long>getLong(":column:")</long>
+        <boolean>getBoolean(":column:")</boolean>
+        <java.sql.Date>getDate(":column:")</java.sql.Date>
+        <float>getFloat(":column:")</float>
+        <double>getDouble(":column:")</double>
+        <int>getInt(":column:")</int>
+        <java.sql.Time>getTime(":column:")</java.sql.Time>
+        <java.sql.Timestamp>getTimestamp(":column:")</java.sql.Timestamp>
+        <byte>getByte(":column:")</byte>
+        <java.sql.Array>getArray(":column:")</java.sql.Array>
+        <java.lang.Object>getObject(":column:")</java.lang.Object>
+        <UNKNOWN>getObject(":column:")</UNKNOWN>
+    </dbfunctions>
+    <Objectcasting>
+        <sqlconverter>psqlConverter</sqlconverter>
+        <datatypes>
+            <point>
+                <databasedriverdatatype>org.postgis.PGpoint</databasedriverdatatype>
+                <customdatatype>psqlPoint</customdatatype>
+                <datatype>piPoint</datatype>
+            </point>
+            <geometry>
+                <databasedriverdatatype>org.postgis.PGgeometry</databasedriverdatatype>
+                <customdatatype>psqlGeometry</customdatatype>
+                <datatype>piShape</datatype>
+            </geometry>
+            <json>
+                <databasedriverdatatype>json</databasedriverdatatype>
+                <customdatatype>psqlJsonobject</customdatatype>
+                <datatype>piJson</datatype>
+            </json>
+        </datatypes>
+    </Objectcasting>
+</language>
+
+

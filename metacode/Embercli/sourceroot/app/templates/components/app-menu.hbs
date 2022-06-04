@@ -1,0 +1,18 @@
+{{! //Metacoder: NO AUTHOMATIC UPDATE }}
+<div class="app-menu">
+{{#each applist as |app|}}
+    <div class="appcontainer">
+        <div class="appdecoration">
+    {{#if app.openonclick}}
+            <div class="appcontent clickable" {{action "openapp" app}}>
+                {{app.appsmall}}
+            </div>
+    {{else}}
+            <div class="appcontent">
+                {{app.appsmall}}
+            </div>
+    {{/if}}
+        </div>
+    </div>
+{{/each}}
+</div>

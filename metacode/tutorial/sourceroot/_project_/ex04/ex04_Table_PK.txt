@@ -1,0 +1,67 @@
+CLASS ex04:Table:PK
+
+:repeatforeignkeys:
+:inpk:
+    ex04:Pktable:PK :uniquename:PK
+:inpk:
+:repeatforeignkeys:
+:repeatpkfields:
+:notfk:
+    :columntype: :column:
+:notfk:
+:repeatpkfields:
+  
+    FUNCTION ex04:Table:PK(:repeatpkfields::columntype: :column::,::repeatpkfields:)
+    {
+:repeatforeignkeys:
+:inpk:
+        SELF.:uniquename:PK = new ex04:Pktable:PK(:repeatforeignkeyfields::foreigncolumn::,::repeatforeignkeyfields:)
+:inpk:
+:repeatforeignkeys:
+:repeatpkfields:
+:notfk:
+        SELF.:column: = :column:
+:notfk:
+:repeatpkfields:
+    }
+
+:repeatforeignkeys:
+:inpk:
+    FUNCTION :Pktable:PK get:Uniquename:PK() 
+    {
+        RETURN SELF.:uniquename:PK
+    }
+
+    FUNCTION set:Uniquename:PK(ex04:Pktable:PK :pktable:PK) 
+    {
+        SELF.:uniquename:PK = :pktable:PK
+    }
+
+:inpk:
+:repeatforeignkeys:
+:repeatpkfields:
+:infk:
+    FUNCTION :columntype: get:Foreigncolumn:() 
+    {
+        RETURN SELF.:uniquename:PK.get:Primarycolumn:()
+    }
+
+    FUNCTION set:Foreigncolumn:(:columntype: :foreigncolumn:) 
+    {
+        SELF.:uniquename:PK.set:Primarycolumn:(:foreigncolumn:)
+    }
+
+:infk:
+:notfk:
+    FUNCTION :columntype: get:Column:() 
+    {
+        RETURN SELF.:column:
+    }
+
+    FUNCTION set:Column:(:columntype: :column:) 
+    {
+        SELF.:column: = :column:
+    }
+
+:notfk:
+:repeatpkfields:

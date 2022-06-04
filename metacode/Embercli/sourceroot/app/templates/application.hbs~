@@ -1,0 +1,2 @@
+{{! //ProjectGenerator: NO AUTHOMATIC UPDATE }}
+{{app-menuframework apps=apps renderapp="renderapp" siteuser=siteuser}}

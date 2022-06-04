@@ -1,0 +1,11 @@
+{{! //Metacoder: NO AUTHOMATIC UPDATE }}
+<div class="appfullheader">
+    <button {{action "menutab" null}}>menu</button>
+{{#each allapps as |app|}}
+    {{#if app.isactive}}
+    <button class="open">{{app.name}}</button>
+    {{else}}
+    <button class="tab" {{action "menutab" app}}>{{app.name}}</button>
+    {{/if}}
+{{/each}}
+</div>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--
+//ProjectGenerator: NO AUTHOMATIC UPDATE
+-->
+<html>
+<head>
+<meta charset="utf-8">
+<title>:Project:</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="css/project-bootstrap-combined.no-icons.min.css" rel="stylesheet">
+  <link href="css/project.css" rel="stylesheet">
+  <link href="css/pikaday.css" rel="stylesheet">
+  <link href="css/periodselector.css" rel="stylesheet">
+  <link href="css/bootstrap-timepicker.min.css" rel="stylesheet">
+  <link rel='stylesheet' media='screen and (max-width: 800px)' href='css/canvasnarrow.css' />
+  <link rel='stylesheet' media='screen and (min-width: 801px)' href='css/canvaswide.css' />  
+</head>
+<body style="background: black;">
+
+<script type="text/x-handlebars">
+<div class="page">
+    <div style="display: table;width:100%;height:70%;">
+        <div style="display:table-row;height:100%;">
+            <div style="display: table-cell;width:205px;">
+                {{#menubox-view id="mainmenu" 
+                    buttonlist=buttonlist
+                    buttonselected=activebutton}}
+                {{/menubox-view}}
+            </div>
+            <div style="display: table-cell;">
+                <div class="recipecontent">
+                    {{outlet}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</script>
+
+<script type="text/x-handlebars" id="components/menubox-view">
+{{#each button in controller.buttonlist}}
+{{#if button.visible}}
+    <div {{bind-attr class="button.cssclass"}} {{action "select" button}}>
+        <div class="recipeborderstyle recipecell">
+            {{button.text}}
+        </div>
+    </div>
+{{/if}}
+{{/each}}
+</script>
+
+<script type="text/x-handlebars" id="components/time-slider">
+    <div id="starttime"></div>
+    <div id="endtime"></div>
+    <div id="activetime"></div>
+    <div id="timeslider"></div>
+    <div id="lefttimeline"></div>
+    <div id="righttimeline"></div>
+    <div id="snaptoblock">
+        snap
+        {{view Ember.RadioButton id="snapyear" name="snapperiod" selectionBinding="snapvalue" value="year"}}year 
+        {{view Ember.RadioButton id="snapmonth" name="snapperiod" selectionBinding="snapvalue" value="month"}}month 
+        {{view Ember.RadioButton id="snapweek" name="snapperiod" selectionBinding="snapvalue" value="week"}}week 
+        {{view Ember.RadioButton id="snapday" name="snapperiod" selectionBinding="snapvalue" value="day"}}day 
+        {{view Ember.RadioButton id="nosnap" name="snapperiod" selectionBinding="snapvalue" value="none"}}none 
+    </div>
+    <div id="resultblock" class="resultblock">
+        <div><img src="img/sliderselector1.png" style="margin-right: 5px;"><span id="activetime1"></span></div>
+        <div><img src="img/sliderselector2.png" style="margin-right: 5px;"><span id="activetime2"></span></div>
+    </div>
+    <img id="timeselector1" src="img/sliderselector1.png" class="timeselector">
+    <img id="timeselector2" src="img/sliderselector2.png" class="timeselector">
+    <div id="timesliderselected"></div>    
+</script>
+
+<script type="text/x-handlebars" id="components/period-selector">
+    <div id="startperiod"></div>
+    <div id="endperiod"></div>
+    <div id="periodbar"></div>
+    <div id="lefttimeline"></div>
+    <div id="righttimeline"></div>
+    <div id="resultblock" class="resultblock">
+        <div>
+            <span style="background-color: #EEEEEE;">Verplaats dit icoon op de tijdsbalk</span> 
+            <img src="img/sliderselector.png" style="margin-right: 5px;">
+            <span id="activeperiod"></span></div>
+    </div>
+    <img id="periodtimeselector" src="img/sliderselector.png" class="periodtimeselector">
+    <div id="periodselected"></div>
+</script>
+
+<script type="text/x-handlebars" id="components/period-stack">
+    <div id="startperiodstack"></div>
+    <div id="endperiodstack"></div>
+    <div id="periodstackbar"></div>
+    <div id="lefttimeline"></div>
+    <div id="righttimeline"></div>
+</script>
+
+<script type="text/x-handlebars" id="components/selectionbox-view">
+{{#each button in controller.buttonlist}}
+    {{#if button.icon}}
+            <input type="image" {{bind-attr src="button.icon"}}
+                {{bind-attr title="button.icontitle"}}
+                {{bind-attr class="button.cssclass"}} {{action "select" button}}></input>
+    {{else}}
+            <div style="width:100px;flow:left;display:inline;position:relative;top:5px;margin-left:5px;" 
+                {{bind-attr class="button.cssclass"}} {{action "select" button}}>{{button.text}}
+            </div>
+    {{/if}}
+{{/each}}                
+</script>
+
+<script type="text/x-handlebars" id="components/customselectbox-view">
+<div class="darkmenu"><div class="menuwrapper">
+{{#each button in controller.buttonlist}}
+    <div {{bind-attr class="button.cssclass"}} {{action "select" button}}>
+        <div class="button">{{button.text}}</div>
+    </div>
+{{/each}}
+</div></div>
+</script>
+
+<script type="text/x-handlebars" id="components/tab-view">
+    <ul class="nav nav-tabs">
+      {{#each pane in panes}}
+        {{#nav-tab paneId=pane.paneId}}<a>{{pane.name}}</a>{{/nav-tab}}
+      {{/each}}
+    </ul>
+  
+    <div class="tab-content">
+      {{yield}}
+    </div>
+</script>
+  
+<script type="text/x-handlebars" id="components/modal-dialog">
+    <div class="overlay" {{action "close"}}>
+      <div class="modal" {{action bubbles=false}}>
+        {{yield}}
+      </div>
+    </div>
+</script>
+  
+<script src="js/libs/jquery-1.10.2.js"></script>
+<script src="js/libs/jquery.base64.js"></script>
+<script src="js/libs/jquery-ui-1.10.4.custom.js"></script>
+<script src="js/libs/jquery-dateFormat.js"></script>
+<script src="js/libs/md5.js"></script>
+<script src="js/libs/handlebars-1.1.2.js"></script>
+<script src="js/libs/ember-1.6.0beta.js"></script>
+<script src="js/libs/showdown.min.js"></script>
+<script src="js/libs/moment.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/appviews.js"></script>
+<script src="js/appcomponents.js"></script>
+<script src="js/libs/pikaday.js"></script>
+<script src="js/bootstrap-timepicker.min.js"></script>
+<script src="js/gis/pishapes.js"></script>
+<script src="js/appdataclasses.js"></script>
+<script src="js/apphandlebars.js"></script>
+
+<!--:project: data-->
+<script src=":project:/entity/table_base.js" type="text/javascript"></script>
+<script src=":project:/entity/table_search.js" type="text/javascript"></script>
+<script src=":project:/entity/entitysearch.js" type="text/javascript"></script>
+<script src=":project:/entity/entity.js" type="text/javascript"></script>
+<script src=":project:/datahandlers/tablehandler_base.js" type="text/javascript"></script>
+<script src=":project:/datahandlers/tablehandler.js" type="text/javascript"></script>
+<!--end :project: data-->
+
+<script src="js/approutes.js"></script>
+<script src="js/appcontrollers.js"></script>
+</body>
+</html>

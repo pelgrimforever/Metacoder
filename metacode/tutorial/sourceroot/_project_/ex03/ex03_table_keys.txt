@@ -1,0 +1,18 @@
+Table :Table:
+
+Primary key
+:repeatpkfields:
+:columntype: :column:
+:repeatpkfields:
+
+:repeatforeignkeys:
+Foreign key: :uniquename:
+:repeatforeignkeyfields:
+:columntype: :column:
+:repeatforeignkeyfields:
+:repeatforeignkeys:
+
+Fields not part of a key
+:repeatfields:
+:columntype: :column:
+:repeatfields:

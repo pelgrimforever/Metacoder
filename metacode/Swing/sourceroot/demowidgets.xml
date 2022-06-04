@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+:repeattables:
+    <WIDGET id=":TABLE:">
+:repeatallfields:
+        <LABEL_:COLUMN:>:column:</LABEL_:COLUMN:>
+:repeatallfields:
+:repeatforeignkeys:
+:notpk:
+        <LABEL_fk:Uniquename:>:uniquename:</LABEL_fk:Uniquename:>
+:notpk:
+:repeatforeignkeys:
+:repeatexternalforeignkeys:
+:ifforeignkey:
+        <BUTTON_:exfkuniquename:_:Extablename:>Open:extablename:s</BUTTON_:exfkuniquename:_:Extablename:>
+:ifforeignkey:
+:repeatexternalforeignkeys:
+    </WIDGET>
+:repeattables:
+</config>

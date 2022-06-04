@@ -1,0 +1,11 @@
+{{#each buttonlist as |button|}}
+    {{#if button.icon}}
+            <input type="image" src="{{button.icon}}"
+                title="{{button.icontitle}}"
+                class="{{button.cssclass}}" {{action "select" button}}>
+    {{else}}
+            <div style="width:100px;flow:left;display:inline;position:relative;top:5px;margin-left:5px;" 
+                class="{{button.cssclass}}" {{action "select" button}}>{{button.text}}
+            </div>
+    {{/if}}
+{{/each}}

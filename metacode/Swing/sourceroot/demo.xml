@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabcontrol>
+:repeattables:
+        <panel config="demo/:table:.xml" menutab="MENU_DEMO" menugroup="demo" label=":Table:">BUTTON_:TABLE:</panel>
+:repeattables:
+    </tabcontrol>
+</config>

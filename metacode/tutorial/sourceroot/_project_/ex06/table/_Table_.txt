@@ -1,0 +1,70 @@
+CLASS :Table:.txt
+
+    :Table:PK :table:PK
+:repeatforeignkeys:
+:notpk:
+    :Pktable:PK :uniquename:PK
+:notpk:
+:repeatforeignkeys:
+:repeatfields:
+:iffieldtype:
+:java.lang.String:
+    STRING :column:
+:java.lang.String:
+:java.sql.Date:
+    DATE :column:
+:java.sql.Date:
+:java.sql.Time:
+    TIME :column:
+:java.sql.Time:
+:other:
+    :columntype: :column:
+:other:
+:iffieldtype:
+:repeatfields:
+	  
+    FUNCTION :Table:(:repeatpkfields::iffieldtype::java.lang.String:STRING:java.lang.String::java.sql.Date:DATE:java.sql.Date::java.sql.Time:TIME:java.sql.Time::other::columntype::other::iffieldtype: :column::,::repeatpkfields:) 
+    {
+        SELF.:table:PK = new :Table:PK(:repeatpkfields::columnjavaname::,::repeatpkfields:)
+    }
+  
+    FUNCTION :Table:(:Table:PK :table:PK) 
+    {
+        SELF.:table:PK = :table:PK
+    }
+
+		FUNCTION setPrimarykey(:Table:PK :table:PK)
+		{
+				SELF.:table:PK = :table:PK
+		}
+	
+		FUNCTION :Table:PK getPrimarykey()
+		{
+				RETURN SELF.:table:PK
+		}
+	
+:repeatfields:
+    FUNCTION :iffieldtype::java.lang.String:STRING:java.lang.String::java.sql.Date:DATE:java.sql.Date::java.sql.Time:TIME:java.sql.Time::other::columntype::other::iffieldtype: get:Column:() 
+    {
+        RETURN SELF.:column:
+    }
+
+    FUNCTION set:Column:(:iffieldtype::java.lang.String:STRING:java.lang.String::java.sql.Date:DATE:java.sql.Date::java.sql.Time:TIME:java.sql.Time::other::columntype::other::iffieldtype: :column:) 
+    {
+        SELF.:column: = :column:
+    }
+
+:repeatfields:
+:repeatforeignkeys:
+:notpk:
+    FUNCTION :Pktable:PK get:Uniquename:PK() 
+    {
+        RETURN this.:uniquename:PK
+    }
+
+    FUNCTION set:Uniquename:PK(:Pktable:PK :uniquename:PK) {
+        SELF.:uniquename:PK = :uniquename:PK;
+    }
+
+:notpk:
+:repeatforeignkeys:

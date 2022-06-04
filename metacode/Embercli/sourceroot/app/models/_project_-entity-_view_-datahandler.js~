@@ -1,0 +1,15 @@
+//ProjectGenerator: NO AUTHOMATIC UPDATE
+/* 
+    Created on : Nov 18, 2015, 12:54:01 PM
+    Generated on :codegenerator_date:
+    Author     : Franky Laseure
+*/
+
+import Ember from 'ember';
+import :Table:DatahandlerBase from '../models/:project:-entitybase-:table:-datahandler';
+import I:Table:Operation from '../models/:project:-entity-:table:-operation';
+import :Table: from '../models/:project:-entity-:table:';
+import :Table:JSON from '../models/:project:-entitybase-:table:-json';
+
+export default SiteuserDatahandlerBase.extend({
+});

@@ -1,0 +1,35 @@
+/*
+ * RSsecurity
+ * check standard authorization in Sitesecurity project
+ */
+
+package :project:.restservices;
+
+import base.servlets.DataHandler;
+import base.servlets.Securitycheck;
+import general.exception.DatahandlerException;
+import java.io.IOException;
+import org.json.simple.JSONObject;
+
+/**
+ *
+ * @author Franky Laseure
+ */
+public class RSsecurity {
+    
+    public static boolean check(JSONObject json) throws DatahandlerException {
+//Custom code, do not change this line   
+//Change security check to your own needs
+        try {
+            String auth = (String)json.get("auth");
+            if(auth!=null) {
+                DataHandler.SERVER = "http://localhost:8080/";
+                return Securitycheck.checkLoginstring(auth);
+            } else return false;
+        } 
+        catch(IOException e) {
+            return false;
+        }        
+//Custom code, do not change this line   
+    }
+}

@@ -1,0 +1,38 @@
+<language>
+    <name>ts</name>
+    <tablenamefilter>
+        <out>_</out>
+    </tablenamefilter>
+    <dbfunctions>
+        <java.lang.String></java.lang.String>
+        <long></long>
+        <boolean></boolean>
+        <java.sql.Date></java.sql.Date>
+        <float></float>
+        <double></double>
+        <int></int>
+        <java.sql.Time></java.sql.Time>
+        <java.sql.Timestamp></java.sql.Timestamp>
+        <byte></byte>
+        <java.sql.Array></java.sql.Array>
+        <java.lang.Object></java.lang.Object>
+        <UNKNOWN></UNKNOWN>
+    </dbfunctions>
+    <Objectcasting>
+        <sqlconverter></sqlconverter>
+        <datatypes>
+            <point>
+                <databasedriverdatatype></databasedriverdatatype>
+                <customdatatype></customdatatype>
+                <datatype></datatype>
+            </point>
+            <geometry>
+                <databasedriverdatatype></databasedriverdatatype>
+                <customdatatype></customdatatype>
+                <datatype></datatype>
+            </geometry>
+        </datatypes>
+    </Objectcasting>
+</language>
+
+

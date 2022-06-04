@@ -1,0 +1,22 @@
+<div class="typeahead-wrap">
+{{input class=inputClazz value=selectedValue placeholder=placeHolderText autocomplete="off" spellcheck="false"}}
+<span style="width:45px;">
+<input type="image" class="text-input" src="assets/images/dropdown.png">
+<input type="image" class="text-input" src="assets/images/list.png" {{action "selectList"}}>
+</span>
+<span class="tt-dropdown-menu {{visibility}}">
+  <div class="tt-dataset-states">
+    <span class="tt-suggestions" style="width:100%">
+    {{#each suggestions as |result|}}
+      <div class="tt-suggestion {{if result.highlight "tt-cursor"}}" {{action "selectItem" result }}>
+        {{yield result}}
+      </div>
+    {{else}}
+      <div class="message">
+        <p>{{noMesssagePlaceHolderText}}</p>
+      </div>
+    {{/each}}
+    </span>
+  </div>
+</span>
+</div>

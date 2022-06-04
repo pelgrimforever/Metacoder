@@ -1,0 +1,23 @@
+//ProjectGenerator: NO AUTHOMATIC UPDATE
+/* 
+    Created on : Nov 18, 2015, 12:54:01 PM
+    Generated on 15.11.2015 11:7
+    Author     : Franky Laseure
+*/
+
+import Ember from 'ember';
+import Appconfig from '../models/appconfig';
+
+export default Ember.Controller.extend({
+    indexservice: Ember.inject.service('index'),
+	apps: [ 
+		Appconfig.create({ appid:"login", component: "login-comp", size: 1, openonclick: false, handlebar: "login", fixed: true, name: "login" }),
+	],
+    setup: Ember.on('init', function() {
+        //this is to trigger the init from indexservice
+        this.get("indexservice").set("dummy", null);
+    }),	
+    actions: {
+    }
+});
+

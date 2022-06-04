@@ -1,0 +1,12 @@
+//Auto generated code
+//don't change things here, it will be overwritten
+
+import Ember from 'ember';
+import Keysearcher from '../models/:project:-entitybase-keysearcher';
+
+export default Keysearcher.extend({
+    init: function() {
+        this._super();
+        this.type = this.relationalkeysearcher;
+    }
+});

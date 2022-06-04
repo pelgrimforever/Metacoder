@@ -1,0 +1,16 @@
+//ProjectGenerator: NO AUTHOMATIC UPDATE
+//Change function definitions here, NOT in recipe-entitybase-recipe-operation.js
+/* 
+    Created on : Mar 10, 2016, 10:27:01 PM
+    Generated on 1.1.2016 17:37
+    Author     : Franky Laseure
+*/
+
+import Ember from 'ember';
+import ServiceRecipeJSONBase from '../services/recipe-recipe-json-base';
+
+export default ServiceRecipeJSONBase.extend({
+	fromJSON: function(model, jsonobj) {
+		this._super(model, jsonobj);
+	}
+});

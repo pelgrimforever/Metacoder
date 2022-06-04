@@ -1,0 +1,8 @@
+//ProjectGenerator: NO AUTHOMATIC UPDATE
+//Change function definitions here, NOT in :project:-entitybase-:table:-operation.js
+
+import Ember from 'ember';
+import :Table:OperationBase from '../models/:project:-entitybase-:table:-operation';
+
+export default :Table:OperationBase.extend({
+});

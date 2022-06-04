@@ -1,0 +1,31 @@
+//generated at :metacoder_date:
+
+CLASS :Table:read.txt
+
+//Custom code, do not change this line
+//Custom code, do not change this line
+
+    FUNCTION :Table: readrecord(SQLRESULT sqlresultset)
+    {
+      :Table:PK :table:PK = new :Table:PK(:repeatpkfields:sqlresultset.:getcolumndbfunction::,::repeatpkfields:)
+      :Table: :table: = new :Table:(:table:PK)
+:repeatforeignkeys:
+:notpk:
+      :table:.set:Uniquename:PK(new :Pktable:PK(:repeatforeignkeyfields:sqlresultset.:getcolumndbfunction::,::repeatforeignkeyfields:))
+:notpk:
+:repeatforeignkeys:
+:repeatfields:
+:iffieldtype:
+:java.lang.Object:
+      :table:.set:Column:(sqlresultset.getBytes(":column_o:"))
+:java.lang.Object:
+:other:
+      :table:.set:Column:(sqlresultset.:getcolumndbfunction:)
+:other:
+:iffieldtype:
+:repeatfields:
+      RETURN :table:
+    }
+
+}
+

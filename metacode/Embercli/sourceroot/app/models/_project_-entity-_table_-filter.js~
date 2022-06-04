@@ -1,0 +1,8 @@
+//ProjectGenerator: NO AUTHOMATIC UPDATE
+//Change function definitions here, NOT in :project:-entitybase-:table:-filter.js
+
+import Ember from 'ember';
+import :Table:filter_base from '../models/:project:-entitybase-:table:-filter';
+
+export default :Table:filter_base.extend({
+});

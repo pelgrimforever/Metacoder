@@ -1,0 +1,31 @@
+//Auto generated code
+//don't change things here, it will be overwritten
+
+import Ember from 'ember';
+import Fieldsearcher from '../models/:project:-entitybase-fieldsearcher';
+
+export default Fieldsearcher.extend({
+    //build parameters
+    compareoperator: this.STRING_LIKE,
+
+    init: function() {
+      this._super();
+      this.type = this.stringsearcher;
+    },
+
+    setCompareoperator: function(compare) {
+        this.compareoperator = compare;
+    },
+
+    reset: function() {
+        this.values.clear();
+    },
+    toJSON: function() {
+        var json = {
+	    values: this.valuestoJSON(), 
+	    compareoperator: this.compareoperator,
+	    andor: this.andoroperator
+        };
+        return json;
+    }
+});

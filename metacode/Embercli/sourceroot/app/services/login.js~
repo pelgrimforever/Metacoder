@@ -1,0 +1,13 @@
+//ProjectGenerator: NO AUTHOMATIC UPDATE
+/* 
+    Created on : Nov 18, 2015, 12:54:01 PM
+    Generated on :codegenerator_date:
+    Author     : Franky Laseure
+*/
+
+import Ember from 'ember';
+
+export default Ember.Service.extend({
+    dummy: "",
+});
+

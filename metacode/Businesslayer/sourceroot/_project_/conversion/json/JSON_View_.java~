@@ -1,0 +1,83 @@
+package :project:.conversion.json;
+
+import data.conversion.JSONConversion;
+import data.gis.shape.GISConversion;
+import :project:.interfaces.logicview.I:Table:;
+import :project:.logicview.:Table:;
+import :project:.searchentity.*;
+import java.sql.Date;
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+/**
+ *
+ * @author Franky Laseure
+ */
+public class JSON:Table: {
+    
+    /**
+     * 
+     * @return all keys and fields in a JSONObject
+     */
+    public static JSONObject toJSON(I:Table: :table:) {
+        JSONObject json = new JSONObject();
+:repeatfields:
+:iffieldtype:
+:java.sql.Array::java.sql.Array:
+:java.sql.Date:
+        if(:table:.get:Column:()!=null) {
+	        json.put(":column:", :table:.get:Column:().getTime());
+        }
+:java.sql.Date:
+:java.sql.Time:
+        if(:table:.get:Column:()!=null) {
+	        json.put(":column:", :table:.get:Column:().getTime());
+        }
+:java.sql.Time:
+:long:
+        json.put(":column:", String.valueOf(:table:.get:Column:()));
+:long:
+:customfieldtype:
+        if(:table:.get:Column:()!=null) {
+            json.put(":column:", GISConversion.toJSON(:table:.get:Column:()));
+        }
+:customfieldtype:
+:other:
+        json.put(":column:", :table:.get:Column:());
+:other:
+:iffieldtype:
+:repeatfields:
+//Custom code, do not change this line
+//Custom code, do not change this line
+        return json;
+    }
+
+    public static :Table: to:Table:(JSONObject json) {
+        :Table: :table: = new :Table:();
+:repeatfields:
+:iffieldtype:
+:java.sql.Array::java.sql.Array:
+:java.lang.String:
+        :table:.set:Column:(JSONConversion.getString(json, ":column:"));
+:java.lang.String:
+:java.sql.Time:
+        :table:.set:Column:(JSONConversion.getTime(json, ":column:"));
+:java.sql.Time:
+:java.sql.Date:
+        :table:.set:Column:(JSONConversion.getDate(json, ":column:"));
+:java.sql.Date:
+:customfieldtype:
+        :table:.set:Column:(GISConversion.topiShape((JSONObject)json.get(":column:")));
+:customfieldtype:
+:other:
+        :table:.set:Column:(JSONConversion.get:columntype:(json, ":column:"));
+:other:
+:iffieldtype:
+:repeatfields:
+        return :table:;
+    }
+}
+

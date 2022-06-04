@@ -1,0 +1,30 @@
+//ProjectGenerator: NO AUTHOMATIC UPDATE
+//Change function definitions here, NOT in sitesecurity-entitybase-siteuser-operation.js
+
+import Ember from 'ember';
+import ServiceSiteuserBase from '../services/sitesecurity-siteuser-base';
+import ISiteuserOperation from '../models/sitesecurity-entity-siteuser-operation';
+import Siteuser from '../models/sitesecurity-entity-siteuser';
+import SiteuserJSON from '../models/sitesecurity-entitybase-siteuser-json';
+
+export default ServiceSiteuserBase.extend({
+	authenticate: function(data, controller) {
+		var url = this.WEBSERVICE + this.servicename;
+		var idata = ISiteuserOperation.create();
+		var operationtype = idata.OPERATIONTYPE_SELECT;
+		var operation = idata.SELECT_AUTHENTICATE;
+		$.ajax({
+		        type: "POST",
+		        url: url,
+		        data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}, \"data\": \"" + data + "\"}",
+		        dataType: "json",
+		        contentType: "application/json;"
+		}).then(function(response) {
+		    var siteuser = Siteuser.create();
+		    var conversion = SiteuserJSON.create();
+		    conversion.fromJSON(siteuser, response);
+		    siteuser.auth = data;
+		    controller.authenticateresult(siteuser);
+		});
+	}    
+});

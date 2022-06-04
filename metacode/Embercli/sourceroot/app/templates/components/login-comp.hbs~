@@ -1,0 +1,31 @@
+{{! //ProjectGenerator: NO AUTHOMATIC UPDATE }}
+<div class="centerwrap1">
+    <div class="centerwrap2">
+        <div class="centerwrap3">
+            <div class="loginheader">
+{{#if showlogin}}
+                <img src="assets/images/login.png">
+{{else}}
+                <img src="assets/images/login_nopic.png">
+{{/if}}
+            </div>
+            <div class="logincontent">
+                <table class="viewlist" width="100%">
+{{#if showlogin}}
+                    <tr><th><span class="text">gebruikersnaam</span></th><td>{{input value=loginmodel.name}}</td></tr>
+                    <tr><th><span class="text">paswoord</span></th><td>{{input value=loginmodel.password type="password"}}</td></tr>
+{{else}}
+                    <tr><th><span class="text">gebruikersnaam</span></th><td>{{loginmodel.name}}</td></tr>
+{{/if}}
+                </table>
+            </div>
+            <div class="loginfooter">
+{{#if showlogin}}
+                <button {{action "login"}}> login </button>
+{{else}}
+                <button {{action "logout"}}> logout </button>
+{{/if}}
+            </div>
+        </div>
+    </div>
+</div>

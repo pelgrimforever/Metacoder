@@ -1,0 +1,61 @@
+{{! //Metacoder: NO AUTHOMATIC UPDATE }}
+<div class="page">
+
+	<div class="app-menu">
+	    {{#each apps as |app|}}
+	        <div class="{{if (eq app.size 1) 'appcontainer'}} 
+	                    {{if (eq app.size 2) 'appcontainerdouble'}} 
+	                    {{if (eq app.size 3) 'appcontainertriple'}}">
+	            <div class="appdecoration">
+	        {{#if app.openonclick}}
+	                <div class="appcontent clickable" {{action "openapp" app}}>
+	                    {{component app.component app=app opentemplate="opentemplate"}}
+	                </div>
+	        {{else}}
+	                <div class="appcontent">
+	                    {{component app.component app=app openapp="openapp" opentemplate="opentemplate" openpopup="openpopup"}}
+	                </div>
+	        {{/if}}
+	            </div>
+	        </div>
+	    {{/each}}
+	</div>
+
+	<div class="appfullcontainer" id="appview">
+	    {{app-tabs menutab="menutab" allapps=allapps}}
+	    
+	    <div class="appfullcontent ishidden" id="fixedapp0">{{outlet "fixedapp0"}}</div>
+	    <div class="appfullcontent ishidden" id="fixedapp1">{{outlet "fixedapp1"}}</div>
+	    <div class="appfullcontent ishidden" id="fixedapp2">{{outlet "fixedapp2"}}</div>
+	    <div class="appfullcontent ishidden" id="fixedapp3">{{outlet "fixedapp3"}}</div>
+	    <div class="appfullcontent ishidden" id="fixedapp4">{{outlet "fixedapp4"}}</div>
+	    <div class="appfullcontent ishidden" id="fixedapp5">{{outlet "fixedapp5"}}</div>
+	    <div class="appfullcontent ishidden" id="fixedapp6">{{outlet "fixedapp6"}}</div>
+	    <div class="appfullcontent ishidden" id="fixedapp7">{{outlet "fixedapp7"}}</div>
+	    <div class="appfullcontent ishidden" id="fixedapp8">{{outlet "fixedapp8"}}</div>
+	    <div class="appfullcontent ishidden" id="fixedapp9">{{outlet "fixedapp9"}}</div>
+
+	    <div class="appfullcontent ishidden" id="app">{{outlet "app"}}</div>
+	</div>
+
+	<div class="popupcontainer ishidden" id="popup">
+	    <div class="centerwrap1">
+	        <div class="centerwrap2">
+	            <div class="centerwrap3">
+                        {{outlet "popup"}}
+                    </div>
+                </div>
+            </div>
+	</div>
+
+</div>
+
+{{#if splashservice.showsplash}}
+<div class="splash">
+    <img class="splash" style="width:250px;height:250px;z-index: 1000;" src="assets/images/splashbackground.png">
+    <img class="splash rotateimage" style="width:250px;height:250px;z-index: 1001;" src="assets/images/splash.png">
+</div>
+{{else}}
+{{/if}}
+
+

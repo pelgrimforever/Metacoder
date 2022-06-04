@@ -1,0 +1,465 @@
+//Auto generated code
+//don't change things here, it will be overwritten
+//redefine classes in :project:-entity-:table:-datahandler.js
+/* 
+    Created on : Nov 18, 2015, 12:54:01 PM
+    Generated on :codegenerator_date:
+    Author     : Franky Laseure
+*/
+
+import Ember from 'ember';
+import I:Table:Operation from '../models/:project:-entity-:table:-operation';
+import :Table: from '../models/:project:-entity-:table:';
+import :Table:JSON from '../models/:project:-entitybase-:table:-json';
+:repeatforeignkeys:
+import :Pktable:JSON from '../models/:project:-entitybase-:pktable:-json';
+:repeatforeignkeys:
+:repeatreferences:
+import :Extablename:JSON from '../models/:project:-entitybase-:extablename:-json';
+:repeatreferences:
+
+export default Ember.Object.extend({
+  WEBSERVICE: "/:Project:Webservices/webresources/",
+  servicename: "rs:table:",
+
+  getcount: function(controller) {
+    var result = 0;
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_SELECT;
+    var operation = idata.SELECT_COUNT;
+    $.ajax({
+            type: "POST",
+            url: url,
+            data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}}",
+            dataType: "json",
+            contentType: "application/json;"
+    }).then(function(response) {
+        controller.countresponse(response.recordcount);
+    });
+  },
+
+  get:Table:s: function() {
+    var :table:s = [];
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_SELECT;
+    var operation = idata.SELECT_ALL;
+    $.ajax({
+	    type: "POST",
+	    url: url,
+	    data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}}",
+	    dataType: "json",
+	    contentType: "application/json;"
+    }).then(function(response) {
+      for(var i = 0; i < response.length; i++) {
+        var :table: = response[i];
+        var model = :Table:.create();
+        var conversion = :Table:JSON.create();
+        conversion.fromJSON(model, :table:);
+        :table:s.addObject(model);
+      }
+    });
+    return :table:s;
+  },
+
+  get:Table:: function(:table:pk) {
+    var :table: = :Table:.create();
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_SELECT;
+    var operation = idata.SELECT_:TABLE:;
+    var conversion = :Table:JSON.create();
+    $.ajax({
+            type: "POST",
+            url: url,
+            data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}, \":table:pk\": " + conversion.PKtoJSONstring(:table:pk) + "}",
+            dataType: "json",
+            contentType: "application/json;"
+    }).then(function(response) {
+        conversion.fromJSON(:table:, response);
+    });
+    return :table:;
+  },
+
+:repeatforeignkeys:
+load:Table:s4:uniquename:: function(:pktable:pk) {
+    var :table:s = [];
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_SELECT;
+    var operation = idata.SELECT_:Uniquename:;
+    var pkconversion = :Pktable:JSON.create();
+    $.ajax({
+            type: "POST",
+            url: url,
+            data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}, \":pktable:pk\": " + pkconversion.PKtoJSONstring(:pktable:pk) + "}",
+            dataType: "json",
+            contentType: "application/json;"
+    }).then(function(response) {
+      for(var i = 0; i < response.length; i++) {
+        var :table: = response[i];
+        var model = :Table:.create();
+        var conversion = :Table:JSON.create();
+        conversion.fromJSON(model, :table:);
+        :table:s.addObject(model);
+      }      
+    });
+    return :table:s;
+  },
+
+:repeatforeignkeys:
+:repeatexternalforeignkeys:
+:ifforeignkey:
+  load:Table:4:uniquename:: function(:uniquename:pk) {
+    var :table: = :Table:.create();
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_SELECT;
+    var operation = idata.SELECT_:Uniquename:;
+    var exconversion = :Extablename:JSON.create();
+    $.ajax({
+            type: "POST",
+            url: url,
+            data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}, \":extablename:pk\": " + exconversion.PKtoJSONstring(:extablename:pk) + "}",
+            dataType: "json",
+            contentType: "application/json;"
+    }).then(function(response) {
+        var conversion = :Table:JSON.create();
+        conversion.fromJSON(:table:, response);
+    });
+    return :table:;
+  },
+
+:ifforeignkey:
+:repeatexternalforeignkeys:
+  search: function(:table:searcher) {
+    var :table:s = [];
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_SELECT;
+    var operation = idata.SELECT_SEARCH;
+    var searchstring = JSON.stringify(:table:searcher.toJSON());
+    $.ajax({
+            type: "POST",
+            url: url,
+            data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}, \"search\": " + searchstring + "}",
+            dataType: "json",
+            contentType: "application/json;"
+    }).then(function(response) {
+      for(var i = 0; i < response.length; i++) {
+        var :table: = response[i];
+        var model = :Table:.create();
+        var conversion = :Table:JSON.create();
+        conversion.fromJSON(model, :table:);
+        :table:s.addObject(model);
+      }
+    });
+    return :table:s;
+  },
+
+  searchcount: function(:table:searcher, controller) {
+    var result = 0;
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_SELECT;
+    var operation = idata.SELECT_SEARCHCOUNT;
+    var searchstring = JSON.stringify(:table:searcher.toJSON());
+    $.ajax({
+            type: "POST",
+            url: url,
+            data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}, \"search\": " + searchstring + "}",
+            dataType: "json",
+            contentType: "application/json;"
+    }).then(function(response) {
+        controller.countresponse(response.recordcount);
+    });
+  },
+
+  insert: function(:table:, controller) {
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_INSERT;
+    var operation = idata.INSERT_:TABLE:;
+    var conversion = :Table:JSON.create();
+    $.ajax({
+            type: "POST",
+            url: url,
+            data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}, \":table:\": " + conversion.toJSONstring(:table:) + "}",
+            dataType: "json",
+            contentType: "application/json;"
+    }).then(function(response) {
+        controller.insertresponse(response);
+    });
+  },
+
+  save: function(:table:, controller) {
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_UPDATE;
+    var operation = idata.UPDATE_:TABLE:;
+    var conversion = :Table:JSON.create();
+    $.ajax({
+            type: "POST",
+            url: url,
+            data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}, \":table:\": " + conversion.toJSONstring(:table:) + "}",
+            dataType: "json",
+            contentType: "application/json;"
+    }).then(function(response) {
+        controller.saveresponse(response);
+    });
+  },
+
+  del: function(:table:, controller) {
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_DELETE;
+    var operation = idata.DELETE_:TABLE:;
+    var conversion = :Table:JSON.create();
+    $.ajax({
+            type: "POST",
+            url: url,
+            data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}, \":table:\": " + conversion.toJSONstring(:table:) + "}",
+            dataType: "json",
+            contentType: "application/json;"
+    }).then(function(response) {
+        controller.delresponse(response);
+    });
+  },
+
+//SECURE SECTION START
+  sec_getcount: function(user, controller) {
+    var result = 0;
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_SECURESELECT;
+    var operation = idata.SELECT_COUNT;
+    var auth = "";
+    if(user!=null) auth = user.auth;
+    $.ajax({
+            type: "POST",
+            url: url,
+            data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}" +
+                    ", \"auth\": \"" + auth + "\"}",
+            dataType: "json",
+            contentType: "application/json;"
+    }).then(function(response) {
+        controller.countresponse(response.recordcount);
+    });
+  },
+
+  sec_get:Table:s: function(user) {
+    var :table:s = [];
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_SECURESELECT;
+    var operation = idata.SELECT_ALL;
+    var auth = "";
+    if(user!=null) auth = user.auth;
+    $.ajax({
+	    type: "POST",
+	    url: url,
+	    data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}" +
+                    ", \"auth\": \"" + auth + "\"}",
+	    dataType: "json",
+	    contentType: "application/json;"
+    }).then(function(response) {
+      for(var i = 0; i < response.length; i++) {
+        var :table: = response[i];
+        var model = :Table:.create();
+        var conversion = :Table:JSON.create();
+        conversion.fromJSON(model, :table:);
+        :table:s.addObject(model);
+      }
+    });
+    return :table:s;
+  },
+
+  sec_get:Table:: function(user, :table:pk) {
+    var :table: = :Table:.create();
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_SECURESELECT;
+    var operation = idata.SELECT_:TABLE:;
+    var auth = "";
+    if(user!=null) auth = user.auth;
+    var conversion = :Table:JSON.create();
+    $.ajax({
+            type: "POST",
+            url: url,
+            data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}, \":table:pk\": " + conversion.PKtoJSONstring(:table:pk) +
+                    ", \"auth\": \"" + auth + "\"}",
+            dataType: "json",
+            contentType: "application/json;"
+    }).then(function(response) {
+        conversion.fromJSON(:table:, response);
+    });
+    return :table:;
+  },
+
+:repeatforeignkeys:
+  sec_load:Table:s4:uniquename:: function(user, :pktable:pk) {
+    var :table:s = [];
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_SECURESELECT;
+    var operation = idata.SELECT_:Uniquename:;
+    var auth = "";
+    if(user!=null) auth = user.auth;
+    var pkconversion = :Pktable:JSON.create();
+    $.ajax({
+            type: "POST",
+            url: url,
+            data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}, \":pktable:pk\": " + pkconversion.PKtoJSONstring(:pktable:pk) +
+                    ", \"auth\": \"" + auth + "\"}",
+            dataType: "json",
+            contentType: "application/json;"
+    }).then(function(response) {
+      for(var i = 0; i < response.length; i++) {
+        var :table: = response[i];
+        var model = :Table:.create();
+        var conversion = :Table:JSON.create();
+        conversion.fromJSON(model, :table:);
+        :table:s.addObject(model);
+      }
+    });
+    return :table:s;
+  },
+
+:repeatforeignkeys:
+:repeatexternalforeignkeys:
+:ifforeignkey:
+  sec_load:Table:4:uniquename:: function(user, :uniquename:pk) {
+    var :table: = :Table:.create();
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_SECURESELECT;
+    var operation = idata.SELECT_:Uniquename:;
+    var auth = "";
+    if(user!=null) auth = user.auth;
+    var exconversion = :Extablename:JSON.create();
+    $.ajax({
+            type: "POST",
+            url: url,
+            data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}, \":extablename:pk\": " + exconversion.PKtoJSONstring(:extablename:pk) +
+                    ", \"auth\": \"" + auth + "\"}",
+            dataType: "json",
+            contentType: "application/json;"
+    }).then(function(response) {
+        var conversion = :Table:JSON.create();
+        conversion.fromJSON(:table:, response);
+    });
+    return :table:;
+  },
+
+:ifforeignkey:
+:repeatexternalforeignkeys:
+  sec_search: function(user, :table:searcher) {
+    var :table:s = [];
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_SECURESELECT;
+    var operation = idata.SELECT_SEARCH;
+    var searchstring = JSON.stringify(:table:searcher.toJSON());
+    var auth = "";
+    if(user!=null) auth = user.auth;
+    $.ajax({
+            type: "POST",
+            url: url,
+            data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}, \"search\": " + searchstring +
+                    ", \"auth\": \"" + auth + "\"}",
+            dataType: "json",
+            contentType: "application/json;"
+    }).then(function(response) {
+      for(var :table: in response) {
+        var model = :Table:.create();
+        var conversion = :Table:JSON.create();
+        conversion.fromJSON(model, :table:);
+        :table:s.addObject(model);
+      }
+    });
+    return :table:s;
+  },
+
+  sec_searchcount: function(:table:searcher, user, controller) {
+    var result = 0;
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_SECURESELECT;
+    var operation = idata.SELECT_SEARCHCOUNT;
+    var searchstring = JSON.stringify(:table:searcher.toJSON());
+    var auth = "";
+    if(user!=null) auth = user.auth;
+    $.ajax({
+            type: "POST",
+            url: url,
+            data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}, \"search\": " + searchstring +
+                    ", \"auth\": \"" + auth + "\"}",
+            dataType: "json",
+            contentType: "application/json;"
+    }).then(function(response) {
+        controller.countresponse(response.recordcount);
+    });
+  },
+
+  sec_insert: function(:table:, user, controller) {
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_SECUREINSERT;
+    var operation = idata.INSERT_:TABLE:;
+    var auth = "";
+    if(user!=null) auth = user.auth;
+    var conversion = :Table:JSON.create();
+    $.ajax({
+            type: "POST",
+            url: url,
+            data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}, \":table:\": " + conversion.toJSONstring(:table:) +
+                    ", \"auth\": \"" + auth + "\"}",
+            dataType: "json",
+            contentType: "application/json;"
+    }).then(function(response) {
+        controller.insertresponse(response);
+    });
+  },
+
+  sec_save: function(:table:, user, controller) {
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_SECUREUPDATE;
+    var operation = idata.UPDATE_:TABLE:;
+    var auth = "";
+    if(user!=null) auth = user.auth;
+    var conversion = :Table:JSON.create();
+    $.ajax({
+            type: "POST",
+            url: url,
+            data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}, \":table:\": " + conversion.toJSONstring(:table:) +
+                    ", \"auth\": \"" + auth + "\"}",
+            dataType: "json",
+            contentType: "application/json;"
+    }).then(function(response) {
+        controller.saveresponse(response);
+    });
+  },
+
+  sec_del: function(:table:, user, controller) {
+    var url = this.WEBSERVICE + this.servicename;
+    var idata = I:Table:Operation.create();
+    var operationtype = idata.OPERATIONTYPE_SECUREDELETE;
+    var operation = idata.DELETE_:TABLE:;
+    var auth = "";
+    if(user!=null) auth = user.auth;
+    var conversion = :Table:JSON.create();
+    $.ajax({
+            type: "POST",
+            url: url,
+            data: "{\"operation\": {\"type\": " + operationtype + ", \"operation\": " + operation + "}, \":table:\": " + conversion.toJSONstring(:table:) +
+                    ", \"auth\": \"" + auth + "\"}",
+            dataType: "json",
+            contentType: "application/json;"
+    }).then(function(response) {
+        controller.delresponse(response);
+    });
+  }
+//SECURE SECTION END
+});

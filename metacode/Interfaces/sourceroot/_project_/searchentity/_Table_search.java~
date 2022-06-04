@@ -1,0 +1,571 @@
+/*
+ * :Table:search.java
+ *
+ * Created on Feb 29, 2012, 18:15 PM
+ * Generated on :codegenerator_date:
+ *
+ */
+
+package :project:.searchentity;
+
+import :project:.interfaces.searchentity.I:Table:search;
+import :project:.interfaces.entity.pk.*;
+import data.interfaces.db.*;
+import :project:.interfaces.logicentity.*;
+import :project:.interfaces.searchentity.*;
+import :project:.entity.e:Table:;
+import java.sql.Date;
+import java.sql.Time;
+
+/**
+ * Search class for :Table: table
+ * construct sql where part and parameter array from search parameters
+ * @author Franky Laseure
+ */
+public class :Table:search extends Tablesearch implements I:Table:search {
+
+:repeatpkfields:
+:notfk:
+:iffieldtype:
+:java.sql.Date:
+    Datesearch :columnjavaname: = new Datesearch(":table:.:column:");
+:java.sql.Date: 
+:java.sql.Time:
+    Timesearch :columnjavaname: = new Timesearch(":table:.:column:");
+:java.sql.Time: 
+:java.sql.Timestamp:
+    Timesearch :columnjavaname: = new Timesearch(":table:.:column:");
+:java.sql.Timestamp: 
+:byte:
+    Numbersearch :columnjavaname: = new Numbersearch(":table:.:column:");
+:byte:
+:int:
+    Numbersearch :columnjavaname: = new Numbersearch(":table:.:column:");
+:int:
+:long:
+    Numbersearch :columnjavaname: = new Numbersearch(":table:.:column:");
+:long: 
+:double:
+    Numbersearch :columnjavaname: = new Numbersearch(":table:.:column:");
+:double:
+:float:
+    Numbersearch :columnjavaname: = new Numbersearch(":table:.:column:");
+:float: 
+:boolean:
+    Booleansearch :columnjavaname: = new Booleansearch(":table:.:column:");
+:boolean: 
+:other:
+    Stringsearch :columnjavaname: = new Stringsearch(":table:.:column:");
+:other:
+:iffieldtype:
+:notfk:
+:repeatpkfields:
+:repeatfields:
+:iffieldtype:
+:java.sql.Date:
+    Datesearch :columnjavaname: = new Datesearch(":table:.:column:");
+:java.sql.Date: 
+:java.sql.Time:
+    Timesearch :columnjavaname: = new Timesearch(":table:.:column:");
+:java.sql.Time: 
+:java.sql.Timestamp:
+    Timesearch :columnjavaname: = new Timesearch(":table:.:column:");
+:java.sql.Timestamp: 
+:byte:
+    Numbersearch :columnjavaname: = new Numbersearch(":table:.:column:");
+:byte:
+:int:
+    Numbersearch :columnjavaname: = new Numbersearch(":table:.:column:");
+:int:
+:long:
+    Numbersearch :columnjavaname: = new Numbersearch(":table:.:column:");
+:long: 
+:double:
+    Numbersearch :columnjavaname: = new Numbersearch(":table:.:column:");
+:double: 
+:float:
+    Numbersearch :columnjavaname: = new Numbersearch(":table:.:column:");
+:float: 
+:boolean:
+    Booleansearch :columnjavaname: = new Booleansearch(":table:.:column:");
+:boolean: 
+:other:
+    Stringsearch :columnjavaname: = new Stringsearch(":table:.:column:");
+:other:
+:iffieldtype:
+:repeatfields:
+:repeatforeignkeys:
+    Foreignkeysearch :uniquename:searcher = new Foreignkeysearch(":pktable:", I:Table:.:uniquename:PKfields, I:Table:.:uniquename:FKfields);
+:repeatforeignkeys:
+:repeatexternalforeignkeys:
+:ifforeignkey:
+    Primarykeysearch :uniquename:searcher = new Primarykeysearch(":extablename:", I:Extablename:.:exfkuniquename:PKfields, I:Extablename:.:exfkuniquename:FKfields);
+:ifforeignkey:
+:ifrelational:
+    Relationalkeysearch :uniquename:searcher = new Relationalkeysearch(":reltablename:", I:Reltablename:.:exfkuniquename:PKfields, I:Reltablename:.:exfkuniquename:FKfields, ":extablename:", I:Reltablename:.:relfkuniquename:PKfields, I:Reltablename:.:relfkuniquename:FKfields);
+:ifrelational:
+:repeatexternalforeignkeys:
+
+    /**
+     * Constructor
+     * add IFieldsearcher classes for all relevant fields
+     */
+    public :Table:search() {
+        setFieldsearchers();
+    }
+
+    /**
+     * Constructor
+     * add IFieldsearcher classes for all relevant fields
+     * set andor parameter
+     * @param andor: containts AND or OR contant, indicates all conditions must apply or only one
+     */
+    public :Table:search(byte andor) {
+        super(andor);
+        setFieldsearchers();
+    }
+
+    /**
+     * add IFieldsearcher classes for all relevant fields
+     */
+    private void setFieldsearchers() {
+:repeatpkfields:
+:notfk:
+        addFieldsearcher(:columnjavaname:);
+:notfk:
+:repeatpkfields:
+:repeatfields:
+        addFieldsearcher(:columnjavaname:);
+:repeatfields:
+:repeatforeignkeys:
+        addKeysearcher(:uniquename:searcher);
+:repeatforeignkeys:
+:repeatexternalforeignkeys:
+        addKeysearcher(:uniquename:searcher);
+:repeatexternalforeignkeys:
+    }
+
+    /**
+     * add a primary key instance to search for
+     * @param :table:PK: :Table: primery key
+     */
+    public void addPrimarykey(I:Table:PK :table:PK) {
+        super.addPrimarykey(:table:PK);
+    }
+
+:repeatpkfields:
+:notfk:
+:iffieldtype:
+:java.sql.Date:
+    /**
+     * add Date search values for field :column:, default OR operator is used
+     * @param values: Array of date search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     */
+    public void :columnjavaname:(Date[] values, byte[] operators) {
+        addDatevalues(:columnjavaname:, values, operators);
+    }
+    
+    /**
+     * add Date search values for field :column:
+     * @param values: Array of date search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     * @param andor; AND/OR constant
+     */
+    public void :columnjavaname:(Date[] values, byte[] operators, byte andor) {
+        addDatevalues(:columnjavaname:, values, operators);
+        :columnjavaname:.setAndoroperator(andor);
+    }
+    
+:java.sql.Date: 
+:java.sql.Time:
+    /**
+     * add Time search values for field :column:, default OR operator is used
+     * @param values: Array of time search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     */
+    public void :columnjavaname:(Time[] values, byte[] operators) {
+        addTimevalues(:columnjavaname:, values, operators);
+    }
+    
+    /**
+     * add Time search values for field :column:
+     * @param values: Array of time search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     * @param andor; AND/OR constant
+     */
+    public void :columnjavaname:(Time[] values, byte[] operators, byte andor) {
+        addTimevalues(:columnjavaname:, values, operators);
+        :columnjavaname:.setAndoroperator(andor);
+    }
+    
+:java.sql.Time: 
+:int:
+    /**
+     * add Numeric search values for field :column:, default OR operator is used
+     * @param values: Array of numeric search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     */
+    public void :columnjavaname:(Double[] values, byte[] operators) {
+        addNumbervalues(:columnjavaname:, values, operators);
+    }
+    
+    /**
+     * add Numeric search values for field :column:
+     * @param values: Array of String search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     * @param andor; AND/OR constant
+     */
+    public void :columnjavaname:(Double[] values, byte[] operators, byte andor) {
+        addNumbervalues(:columnjavaname:, values, operators);
+        :columnjavaname:.setAndoroperator(andor);
+    }
+    
+:int: 
+:long:
+    /**
+     * add Numeric search values for field :column:, default OR operator is used
+     * @param values: Array of numeric search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     */
+    public void :columnjavaname:(Double[] values, byte[] operators) {
+        addNumbervalues(:columnjavaname:, values, operators);
+    }
+    
+    /**
+     * add Numeric search values for field :column:
+     * @param values: Array of String search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     * @param andor; AND/OR constant
+     */
+    public void :columnjavaname:(Double[] values, byte[] operators, byte andor) {
+        addNumbervalues(:columnjavaname:, values, operators);
+        :columnjavaname:.setAndoroperator(andor);
+    }
+    
+:long: 
+:double:
+    /**
+     * add Numeric search values for field :column:, default OR operator is used
+     * @param values: Array of numeric search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     */
+    public void :columnjavaname:(Double[] values, byte[] operators) {
+        addNumbervalues(:columnjavaname:, values, operators);
+    }
+    
+    /**
+     * add Numeric search values for field :column:
+     * @param values: Array of String search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     * @param andor; AND/OR constant
+     */
+    public void :columnjavaname:(Double[] values, byte[] operators, byte andor) {
+        addNumbervalues(:columnjavaname:, values, operators);
+        :columnjavaname:.setAndoroperator(andor);
+    }
+    
+:double: 
+:float:
+    /**
+     * add Numeric search values for field :column:, default OR operator is used
+     * @param values: Array of numeric search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     */
+    public void :columnjavaname:(Double[] values, byte[] operators) {
+        addNumbervalues(:columnjavaname:, values, operators);
+    }
+    
+    /**
+     * add Numeric search values for field :column:
+     * @param values: Array of String search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     * @param andor; AND/OR constant
+     */
+    public void :columnjavaname:(Double[] values, byte[] operators, byte andor) {
+        addNumbervalues(:columnjavaname:, values, operators);
+        :columnjavaname:.setAndoroperator(andor);
+    }
+    
+:float: 
+:boolean:
+    /**
+     * add Boolean search values for field :column:
+     * @param value: true or false
+     */
+    public void :columnjavaname:(Boolean value) {
+        addBooleanvalue(:columnjavaname:, value);
+    }
+    
+:boolean: 
+:other:
+    /**
+     * add String search values for field :column:, default OR and LIKE operators are used
+     * @param values: Array of String search values
+     */
+    public void :columnjavaname:(String[] values) {
+        addStringvalues(:columnjavaname:, values);
+    }
+    
+    /**
+     * add String search values for field :column:
+     * @param values: Array of String search values
+     * @param andor; AND/OR constant
+     * @param compare: EQUAL/LIKE constant
+     */
+    public void :columnjavaname:(String[] values, byte compare, byte andor) {
+        addStringvalues(:columnjavaname:, values);
+        :columnjavaname:.setCompareoperator(compare);
+        :columnjavaname:.setAndoroperator(andor);
+    }
+    
+:other:
+:iffieldtype:
+:notfk:
+:repeatpkfields:
+:repeatfields:
+:iffieldtype:
+:java.sql.Date:
+    /**
+     * add Date search values for field :column:, default OR operator is used
+     * @param values: Array of date search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     */
+    public void :columnjavaname:(Date[] values, byte[] operators) {
+        addDatevalues(:columnjavaname:, values, operators);
+    }
+    
+    /**
+     * add Date search values for field :column:
+     * @param values: Array of date search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     * @param andor; AND/OR constant
+     */
+    public void :columnjavaname:(Date[] values, byte[] operators, byte andor) {
+        addDatevalues(:columnjavaname:, values, operators);
+        :columnjavaname:.setAndoroperator(andor);
+    }
+    
+:java.sql.Date: 
+:java.sql.Time:
+    /**
+     * add Time search values for field :column:, default OR operator is used
+     * @param values: Array of time search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     */
+    public void :columnjavaname:(Time[] values, byte[] operators) {
+        addTimevalues(:columnjavaname:, values, operators);
+    }
+    
+    /**
+     * add Time search values for field :column:
+     * @param values: Array of time search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     * @param andor; AND/OR constant
+     */
+    public void :columnjavaname:(Time[] values, byte[] operators, byte andor) {
+        addTimevalues(:columnjavaname:, values, operators);
+        :columnjavaname:.setAndoroperator(andor);
+    }
+    
+:java.sql.Time: 
+:int:
+    /**
+     * add Numeric search values for field :column:, default OR operator is used
+     * @param values: Array of numeric search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     */
+    public void :columnjavaname:(Double[] values, byte[] operators) {
+        addNumbervalues(:columnjavaname:, values, operators);
+    }
+    
+    /**
+     * add Numeric search values for field :column:
+     * @param values: Array of String search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     * @param andor; AND/OR constant
+     */
+    public void :columnjavaname:(Double[] values, byte[] operators, byte andor) {
+        addNumbervalues(:columnjavaname:, values, operators);
+        :columnjavaname:.setAndoroperator(andor);
+    }
+    
+:int: 
+:long:
+    /**
+     * add Numeric search values for field :column:, default OR operator is used
+     * @param values: Array of numeric search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     */
+    public void :columnjavaname:(Double[] values, byte[] operators) {
+        addNumbervalues(:columnjavaname:, values, operators);
+    }
+    
+    /**
+     * add Numeric search values for field :column:
+     * @param values: Array of String search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     * @param andor; AND/OR constant
+     */
+    public void :columnjavaname:(Double[] values, byte[] operators, byte andor) {
+        addNumbervalues(:columnjavaname:, values, operators);
+        :columnjavaname:.setAndoroperator(andor);
+    }
+    
+:long: 
+:double:
+    /**
+     * add Numeric search values for field :column:, default OR operator is used
+     * @param values: Array of numeric search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     */
+    public void :columnjavaname:(Double[] values, byte[] operators) {
+        addNumbervalues(:columnjavaname:, values, operators);
+    }
+    
+    /**
+     * add Numeric search values for field :column:
+     * @param values: Array of String search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     * @param andor; AND/OR constant
+     */
+    public void :columnjavaname:(Double[] values, byte[] operators, byte andor) {
+        addNumbervalues(:columnjavaname:, values, operators);
+        :columnjavaname:.setAndoroperator(andor);
+    }
+    
+:double: 
+:float:
+    /**
+     * add Numeric search values for field :column:, default OR operator is used
+     * @param values: Array of numeric search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     */
+    public void :columnjavaname:(Double[] values, byte[] operators) {
+        addNumbervalues(:columnjavaname:, values, operators);
+    }
+    
+    /**
+     * add Numeric search values for field :column:
+     * @param values: Array of String search values
+     * @param operators: Array of byte contants for comparison (= < <= > >=)
+     * @param andor; AND/OR constant
+     */
+    public void :columnjavaname:(Double[] values, byte[] operators, byte andor) {
+        addNumbervalues(:columnjavaname:, values, operators);
+        :columnjavaname:.setAndoroperator(andor);
+    }
+    
+:float: 
+:boolean:
+    /**
+     * add Boolean search values for field :column:
+     * @param value: true or false
+     */
+    public void :columnjavaname:(Boolean value) {
+        addBooleanvalue(:columnjavaname:, value);
+    }
+    
+:boolean: 
+:other:
+    /**
+     * add String search values for field :column:, default OR and LIKE operators are used
+     * @param values: Array of String search values
+     */
+    public void :columnjavaname:(String[] values) {
+        addStringvalues(:columnjavaname:, values);
+    }
+    
+    /**
+     * add String search values for field :column:
+     * @param values: Array of String search values
+     * @param andor; AND/OR constant
+     * @param compare: EQUAL/LIKE constant
+     */
+    public void :columnjavaname:(String[] values, byte compare, byte andor) {
+        addStringvalues(:columnjavaname:, values);
+        :columnjavaname:.setCompareoperator(compare);
+        :columnjavaname:.setAndoroperator(andor);
+    }
+    
+:other:
+:iffieldtype:
+:repeatfields:
+:repeatforeignkeys:
+    /**
+     * set subsearch :uniquename: tablesearch
+     * @param :pktable:search: I:Pktable:search
+     */
+    public void :uniquename:(I:Pktable:search :pktable:search) {
+        :uniquename:searcher.setTablesearch(:pktable:search);
+    }
+    
+    /**
+     * 
+     * @return Tablesearch for :Table:
+     */
+    public I:Pktable:search get:Uniquename:search() {
+        if(:uniquename:searcher.used()) {
+            return (I:Pktable:search):uniquename:searcher.getTablesearches().get(0);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * force to return inner join statement
+     * ignore if :uniquename:searcher is not used
+     * @return inner join statement
+     */
+    public String get:Uniquename:Innerjoin() {
+        return :uniquename:searcher.getInnerjoin();
+    }
+
+:repeatforeignkeys:
+:repeatexternalforeignkeys:
+:ifforeignkey:
+    /**
+     * set subsearch :extablename: tablesearch
+     * @param :extablename:search: I:Extablename:search
+     */
+    public void :uniquename:(I:Extablename:search :extablename:search) {
+        :uniquename:searcher.setTablesearch(:extablename:search);
+    }
+    
+    /**
+     * 
+     * @return Tablesearch for :Table:
+     */
+    public I:Extablename:search get:Uniquename:search() {
+        if(:uniquename:searcher.used()) {
+            return (I:Extablename:search):uniquename:searcher.getTablesearches().get(0);
+        } else {
+            return null;
+        }
+    }
+
+:ifforeignkey:
+:ifrelational:
+    /**
+     * set relational subsearch :extablename: tablesearch
+     * @param :extablename:search: I:Extablename:search
+     */
+    public void :uniquename:(I:Extablename:search :extablename:search) {
+        :uniquename:searcher.setTablesearch(:extablename:search);
+    }
+    
+    /**
+     * 
+     * @return Tablesearch for :Table:
+     */
+    public I:Extablename:search get:Uniquename:search() {
+        if(:uniquename:searcher.used()) {
+            return (I:Extablename:search):uniquename:searcher.getTablesearches().get(0);
+        } else {
+            return null;
+        }
+    }
+
+:ifrelational:
+:repeatexternalforeignkeys:
+}

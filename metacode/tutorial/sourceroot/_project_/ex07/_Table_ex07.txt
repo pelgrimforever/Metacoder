@@ -1,0 +1,149 @@
+CLASS :Table:ex07.txt
+
+//repeatallfields - isnotnullable - inpk - notpk - infk - notfk - infknotpk - inkey
+:repeatallfields:
+column - :column:
+	columnjavaname - :columnjavaname:
+	columntype - :columntype:
+	customfieldtype - :customfieldtype:
+	columntypesql - :columntypesql:
+	columnsize - :columnsize:
+	getcolumndbfunction - :getcolumndbfunction:
+	columncast - :columncast:
+	columncustomtype - :columncustomtype:
+	columnposition - :columnposition:
+	counter - :counter:
+:isnotnullable:
+		NULL VALUES NOT ALLOWED
+:isnotnullable:
+:repeatallfields:
+
+//excluding code blocks: (inpk - notpk) - (infk - notfk - infknotpk) - inkey
+:repeatallfields:
+:inpk:
+:column:
+		inpk PART OF PRIMARY KEY
+:inpk:
+:notpk:
+:column:
+		notpk NOT PART OF PRIMARY KEY
+:notpk:
+:infk:
+:column:
+		infk PART OF A FOREIGN KEY
+:infk:
+:notfk:
+:column:
+		notfk NOT PART OF A FOREIGN KEY
+:notfk:
+:infknotpk:
+:column:
+		infknotpk NOT PART OF PRIMARY KEY, PART OF A FOREIGN KEY
+:infknotpk:
+:inkey:
+:column:
+		inkey PART OF A KEY
+:inkey:
+:notkey:
+:column:
+		notkey NOT PART OF A KEY
+:notkey:
+:repeatallfields:
+
+//repeatfields
+:repeatfields:
+column - :column:
+:repeatfields:
+
+//repeatpkfields
+:repeatpkfields:
+column - :column:
+:repeatpkfields:
+
+//iffieldtype
+:repeatallfields:
+:iffieldtype:
+:column:
+:boolean:
+:column: is a boolean
+:boolean:
+:byte:
+:column: is a byte
+:byte:
+:int:
+:column: is an integer
+:int:
+:float:
+:column: is a float
+:float:
+:double:
+:column: is a double
+:double:
+:java.lang.String:
+:column: is a String
+:java.lang.String:
+:java.sql.Date:
+:column: is a Date
+:java.sql.Date:
+:java.sql.Time:
+:column: is a Time
+:java.sql.Time:
+:java.sql.Timestamp:
+:column: is a Timestamp
+:java.sql.Timestamp:
+:customfieldtype:
+:column: is a custom field
+:customfieldtype:
+:Object:
+:column: is an Object
+:Object:
+:other: 
+:column: is of an unknown type
+:other: 
+:iffieldtype:
+:repeatallfields:
+
+//repeatforeignkeys - repeatforeignkeyfields
+:repeatforeignkeys:
+uniquename - :uniquename:
+fkjavaname - :fkjavaname:
+pktable - :pktable:
+pktablejavaname - :pktablejavaname:
+pktablejavanamePK - :pktablejavanamePK:
+:repeatforeignkeyfields:
+	//repeatforeignkeyfields
+	foreigncolumn - :foreigncolumn:
+	primarycolumn - :primarycolumn:
+:repeatforeignkeyfields:
+:repeatforeignkeys:
+
+//repeatuniqueforeignkeys
+:repeatuniqueforeignkeys:
+uniquename - :uniquename:
+:repeatuniqueforeignkeys:
+
+//repeatexternalforeignkeys
+:repeatexternalforeignkeys:
+uniquename - :uniquename:
+	extablename - :extablename:
+	exfkuniquename - :exfkuniquename:
+:repeatexternalforeignkeys:
+
+//repeatallexternalforeignkeys
+:repeatallexternalforeignkeys:
+uniquename - :uniquename:
+	extablename - :extablename:
+	exfkuniquename - :exfkuniquename:
+:repeatallexternalforeignkeys:
+
+//repeatexternalforeignkeys - ifrelational
+:repeatexternalforeignkeys:
+:ifrelational:
+uniquename - :uniquename:
+	extablename - :extablename:
+	exfkuniquename - :exfkuniquename:
+	reltablename - :reltablename:
+	relfkuniquename - :relfkuniquename:
+	relFkuniquename - :relFkuniquename:
+:ifrelational:
+:repeatexternalforeignkeys:

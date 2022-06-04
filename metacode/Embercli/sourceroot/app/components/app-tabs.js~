@@ -1,0 +1,16 @@
+//ProjectGenerator: NO AUTHOMATIC UPDATE
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+    classNames: ['app-tabs'],
+
+    allapps: null,
+    
+    didInsertElement: function() {
+    },
+    actions: {
+        menutab: function(app) {
+            this.sendAction("menutab", app);
+        }
+    }
+});

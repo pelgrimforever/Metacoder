@@ -1,0 +1,54 @@
+8
+
+dir
+1538
+svn://conscientia.net/Matec/Matec003/src/HTTPtools/fileUpload
+svn://conscientia.net/Matec
+
+
+
+2008-01-29T16:23:13.523821Z
+1084
+franky
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+86f1b055-2d32-0410-987d-f11464d2316f
+
+rawData.java
+file
+
+
+
+
+2007-11-02T20:24:58.000000Z
+a2d11074e1e72f62c5889511b31e6ec4
+2007-06-06T15:51:16.488066Z
+6
+svnadmin
+has-props
+
+singleFileUpload.java
+file
+
+
+
+
+2008-01-30T11:47:36.000000Z
+0f1a8709288bf7d06f0d8a2baadbe8fe
+2008-01-29T16:23:13.523821Z
+1084
+franky
+has-props
+
