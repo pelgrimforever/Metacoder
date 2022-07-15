@@ -88,6 +88,7 @@ public class Export2Projects {
     
     public static final String PROJECTSOURCEROOT = "sourceroot"; //root of the metacode source metacode -> to be placed in project source root
     public static final String PROJECTROOT = "projectroot"; //project root files, -> to be placed in the project root map
+    public static final String PROJECTTESTROOT = "testroot"; //project test root files, -> to be placed in the project test map
 
     HashMap<String, Programlanguage> programlanguages = new HashMap<>();
     //next objects need to be set before the convertor can be used
@@ -142,11 +143,15 @@ public class Export2Projects {
             String metacodedir = Fileutilities.getCurrentDir() + Metacodeprocessor.METACODEDIRECTORY + File.separator + metacodename;
             String metacodesourceroot = metacodedir + File.separator + PROJECTSOURCEROOT;
             String metacodeprojectroot = metacodedir + File.separator + PROJECTROOT;
+            String metacodetestroot = metacodedir + File.separator + PROJECTTESTROOT;
             String projectroot = sourceproject.getProjectdirectory();
             projectroot = projectroot.substring(0, projectroot.lastIndexOf(sourceproject.getProjectname())+sourceproject.getProjectname().length());
             File sourcemetacode = new File(metacodesourceroot);
+            File testmetacode = new File(metacodetestroot);
             //duplicate directory structure from metacode source map to project source map
             Export2Projects.this.processmetacodemapstructure(sourcemetacode, sourceproject.getProjectdirectory());
+            if(testmetacode.exists())
+                Export2Projects.this.processmetacodemapstructure(testmetacode, sourceproject.getTestdirectory());
             copydirectory(metacodeprojectroot, projectroot);
         }
         catch(Exception e) {

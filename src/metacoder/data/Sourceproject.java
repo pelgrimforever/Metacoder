@@ -27,6 +27,7 @@ public class Sourceproject {
      */
     public Sourceproject(String projectdirectory) {
         setProjectdirectory(projectdirectory);
+        setTestdirectory(projectdirectory);
         setMetacodelist(new ArrayList<String>());
     }
 
@@ -47,6 +48,7 @@ public class Sourceproject {
         if(xmlelement!=null) {
             setProjectname(xmlelement.getChild("projectname").getValue());
             setProjectdirectory(xmlelement.getChild("projectdirectory").getValue());
+            setTestdirectory(xmlelement.getChild("projectdirectory").getValue());
             ArrayList<String> metacodes = new ArrayList<String>();
             for(Element child: xmlelement.getChild("metacodes").getChildren()) {
                 metacodes.add(child.getValue());
@@ -88,6 +90,20 @@ public class Sourceproject {
         setProjectname(name);
     }
     public StringProperty projectdirectoryProperty() {return projectdirectory;}
+    
+    private StringProperty testdirectory = new SimpleStringProperty();
+    public final String getTestdirectory(){return testdirectory.get();}
+    public final void setTestdirectory(String value) { 
+        String dir = value;
+        String name = dir.substring(dir.lastIndexOf(File.separator)+1);
+        while(name.equals("src") || name.equals("java") || name.equals("web")) {
+            dir = dir.substring(0, dir.lastIndexOf(File.separator));
+            name = dir.substring(dir.lastIndexOf(File.separator)+1);
+        }
+        dir = dir + File.separator + "test";
+        testdirectory.set(dir); 
+    }
+    public StringProperty testdirectoryProperty() {return projectdirectory;}
     
     private ObjectProperty<ArrayList<String>> metacodelist = new SimpleObjectProperty<ArrayList<String>>();
     public final ArrayList<String> getMetacodelist(){return metacodelist.get();}
